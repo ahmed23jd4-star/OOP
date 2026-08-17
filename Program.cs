@@ -21,6 +21,18 @@
             //address01.GetFullAddress();
             //address02.GetFullAddress();
             #endregion
+            #region Question 2
+            //public struct Shipment
+            //public string
+            //Description; public
+            //double Weight; public
+            //decimal DeliveryFee;
+            //a) Identify at least three problems with this design from an encapsulation perspective.
+            // public struct , string , description : you must proberty to have get , set to protcted data field and maintilbalty , and validation
+
+            //b) How can private fields and public properties improve this design?
+            // by use encapsulation using proberty auto for example public string s {get ; set }  or use any property if you have validation 
+            #endregion
         }
     }
 }
