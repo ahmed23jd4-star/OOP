@@ -7,6 +7,7 @@ namespace assignmentoop02
 {
     internal struct DeliveryAddress
     {
+        //djkls
         public string City { get; set; }
         public string Street { get; set; }
         int buildnumber;
