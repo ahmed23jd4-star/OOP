@@ -33,6 +33,7 @@
             //b) How can private fields and public properties improve this design?
             // by use encapsulation using proberty auto for example public string s {get ; set }  or use any property if you have validation 
             #endregion
+
         }
     }
 }

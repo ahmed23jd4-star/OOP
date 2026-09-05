@@ -6,6 +6,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace assignmentoop01
 {
     internal struct Shipment
+        
     {
         #region 2.Ceate a Shipment struct
 

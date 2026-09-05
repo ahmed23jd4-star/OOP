@@ -9,6 +9,7 @@ namespace assignmentoop01
     {
         #region Part 02 : Practicalq1
 
+
         //1. Create a DeliveryAddress struct with:
         //• City of type string.
         //• Street of type string.
