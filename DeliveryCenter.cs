@@ -6,6 +6,7 @@ namespace assignmentoop02
 {
     internal class DeliveryCenter
     {
+        public driver Namedriver { get; set; }
         string centerName;
         public string CenterName { get=>centerName; set
             {
@@ -77,17 +78,7 @@ namespace assignmentoop02
             }
             return false;
         }
-        //public void PrintAllShipments()
-        //{
-        //    for(int i = 0; i < Shipments.Length; i++)
-        //    {
-
-        //    Console.WriteLine($"shipments {i} is");
-        //        Shipments[i].PrintShipment();
-        //    }
-        //}
-
-        public void PrintAllShipmentsremain()
+        public void PrintAllShipments()
         {
             for (int i = 0; i < Shipments.Length; i++)
             {
@@ -98,5 +89,17 @@ namespace assignmentoop02
                 Shipments[i].PrintShipment();
             }
         }
+
+        //public void PrintAllShipmentsremain()
+        //{
+        //    for (int i = 0; i < Shipments.Length; i++)
+        //    {
+        //        if (Shipments[i] == null)
+        //            continue;
+
+        //        Console.WriteLine($"shipments {i} is");
+        //        Shipments[i].PrintShipment();
+        //    }
+        //}
     }
 }
