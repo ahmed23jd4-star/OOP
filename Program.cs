@@ -4,7 +4,29 @@
     {
         static void Main(string[] args)
         {
-            #region field
+            #region part 01 — Theoretical Questions
+
+            //            Abstraction
+            //a)  What is Abstraction in Object - Oriented Programming?
+            //b)  Why is abstraction considered one of the four pillars of OOP ?
+
+            // هو عباره عن استخدام لكود بدون الاهتمام بتفاصيله وازاي اتعمل 
+            //  اقدر اني اتعامل مع استخدام الحاجه من غير ما اهتم بتفاصيل هو اتبني ازاي فيساعدني استخدم الاوبجكت علي طول
+            //اقدر لو حبيت اعدل علي حاجه فبعدل عليها من غير ما الاستخدام يتغير بعدل في ورا الكود 
+            // اقدر استخدم interface  واقلل الاخطاء ان اي حد هيمضي العفد ده فلازم يكون عنده شويه حاجات لازم يعملها فهقلل احتماليه اني انسي حاجه متتعملش 
+
+
+//            Abstract Classes vs.Interfaces
+//a)  What is the difference between an Abstract Class and an Interface?
+//b)  When would you choose an Interface instead of an Abstract Class?
+//c)  Can a class inherit from multiple abstract classes? Can it implement multiple interfaces?
+
+            // الابستراكت كلاس في ميزه اني بشارك الداتا زي  field and constroctur  فلو في علاقه بين الكلاسات الافضل ابستراكت كلاس
+            // اقدر استخدم كذا implment multible  interface   بيديك ميزه انك لو عايز تحقق 
+            //  لو محتاج اعمل شير للداتا او في علاقه بين كلاسين يبقي ابستراكت كلاس مناسب    لو هحتاج اعمل امبلمينت لكذا انترفيس فالاحسن وقتها استخدم الانترفيس
+            // لا الكلاس اخره يرث ابستراكت كلاس بس     اما الانترفيس فهي من ضمن ميزاه التعدد لكذا امبلمينت
+            #endregion
+        #region field
             string trackingcode;
             string descraption;
             decimal weight;
@@ -42,9 +64,6 @@
             #endregion
             Console.WriteLine("--------------------------------------------------------------------------------");
             Console.WriteLine($"delivery center : {obj.CenterName}");
-            Console.WriteLine("--------------------------------------------------------------------------------");
-            Console.WriteLine("standerd shipment\n");
-            sta01.PrintShipment();
             #region ExpressShipment.
             Console.WriteLine("enter the trackingcode for ExpressShipment.");
             trackingcode = Console.ReadLine();
@@ -66,8 +85,6 @@
             ExpressShipment exp01 = new ExpressShipment(trackingcode, descraption, weight, delivaryfee, destaintion, extrafee);
             #endregion
             Console.WriteLine("--------------------------------------------------------------------------------");
-            Console.WriteLine("express shipment\n");
-            exp01.PrintShipment();
             #region InternationalShipment
             Console.WriteLine("enter the trackingcode for InternationalShipment");
             trackingcode = Console.ReadLine();
@@ -91,30 +108,22 @@
             InternationalShipment int01 = new InternationalShipment(trackingcode, descraption, weight, delivaryfee, destaintion, destinationCountry, customsFee);
             #endregion
             Console.WriteLine("--------------------------------------------------------------------------------");
-            Console.WriteLine("internatinal shipment\n");
-            int01.PrintShipment();
-            Console.WriteLine("--------------------------------------------------------------------------------");
             obj[0] = sta01;
             obj[1] = exp01;
             obj[2] = int01;
-            Console.WriteLine("search name");
-             trackingcode = Console.ReadLine();
-            Shipment search = obj[trackingcode];
-            if (search != null)
+            obj.PrintAllShipments();
+            obj.PrintTrackingStatuses();
+            obj.printInsurable();
+            Itrackable[] array00 = { sta01, exp01, int01 };
+            Ilnsurable[] array001 = { sta01, exp01, int01 };
+            foreach (var item in array00)
             {
-                Console.WriteLine("the shipment of search ");
-                search.PrintShipment();
+                Console.WriteLine(item.GetTrackingstatue());
             }
-            Console.WriteLine("remove tracking name");
-            trackingcode = Console.ReadLine();
-            bool resu = obj.RemoveShipment(trackingcode);
-            if (resu)
+            foreach (var item in array001)
             {
-                Console.WriteLine("shioment removed succesfully");
+                Console.WriteLine(item.Calculatelnsurable());
             }
-            else
-                Console.WriteLine("shioment didn,t remov succesfully");
-            obj.PrintAllShipmentsremain();
         }
     }
 }

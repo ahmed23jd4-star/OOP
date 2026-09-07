@@ -4,7 +4,7 @@ using System.Text;
 
 namespace assignmentoop02
 {
-    internal class Shipment
+    internal abstract class Shipment
     {
         //TrackingCode string        cannot be null, empty, or whitespace.  read-only from outside
         //Description string         cannot be null, empty, or whitespace.  read/write property with validation.
@@ -35,7 +35,7 @@ namespace assignmentoop02
         }
         public Decimal DeliveryFee{ get ; private set;}
         public DeliveryAddress Destination { get; set; }
-        public decimal EstimatedCost { get => DeliveryFee + (Weight * 5); }
+        public abstract decimal EstimatedCost { get ; }
         #endregion
         #region constructor
         public Shipment(string trackingcode) {
@@ -68,11 +68,8 @@ namespace assignmentoop02
                 DeliveryFee = newFee;
             }
         }
-        public void PrintShipment()
-        {
-            Console.WriteLine($"tracking code is {TrackingCode} description is {Description} and weight is {Weight} \nthe deliveery fee is {DeliveryFee}" +
-                $"deliveryaddrese is {Destination.GetFullAddress()} \nEstimatedCost: {EstimatedCost}\n");
-        }
+        public abstract void PrintShipment();
+
         #endregion
     }
 }
