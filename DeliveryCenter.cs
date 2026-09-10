@@ -77,17 +77,7 @@ namespace assignmentoop02
             }
             return false;
         }
-        //public void PrintAllShipments()
-        //{
-        //    for(int i = 0; i < Shipments.Length; i++)
-        //    {
-
-        //    Console.WriteLine($"shipments {i} is");
-        //        Shipments[i].PrintShipment();
-        //    }
-        //}
-
-        public void PrintAllShipmentsremain()
+        public void PrintAllShipments()
         {
             for (int i = 0; i < Shipments.Length; i++)
             {
@@ -97,6 +87,32 @@ namespace assignmentoop02
                 Console.WriteLine($"shipments {i} is");
                 Shipments[i].PrintShipment();
             }
+            Console.WriteLine( "---------------------------------------------------\n");
         }
+        public void PrintTrackingStatuses()
+        {
+            foreach ( Itrackable item in Shipments)
+            {
+                if (item == null)
+                {
+                    continue;
+                }
+                Console.WriteLine(item.GetTrackingstatue()+"\n");
+            }
+            Console.WriteLine("-----------------------------------------------\n");
+        }
+        public void printInsurable()
+        {
+            foreach (Ilnsurable item in Shipments)
+            {
+                if(item == null)
+                {
+                    continue;
+                }
+                Console.WriteLine($"{item} is insurance : {item.Calculatelnsurable()}\n");
+            }
+            Console.WriteLine("---------------------------------------\n");
+        }
+
     }
 }
