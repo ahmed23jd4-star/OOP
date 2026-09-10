@@ -6,7 +6,7 @@ using System.Threading.Channels;
 
 namespace assignmentoop02
 {
-    internal class ExpressShipment : Shipment
+    internal class ExpressShipment : Shipment,Itrackable,Ilnsurable
     {
         private decimal extrafee;
         public decimal ExtraFee
@@ -23,11 +23,25 @@ namespace assignmentoop02
             ExtraFee = extrafee;
             
         }
-        public decimal EstimatedCost { get => DeliveryFee + (Weight * 5) + ExtraFee; }
+        public override decimal EstimatedCost { get => DeliveryFee + (Weight * 5) + ExtraFee; }
 
+        public override void PrintShipment()
+        {
+            Console.WriteLine($"tracking code : {TrackingCode}\nExtrafee : {ExtraFee} EG\nEstimatedCost: {EstimatedCost} EG\n ");
+        }
+        public string GetTrackingstatue()
+        {
+            return "Shipment SH002 is Out for Delivery.";
+        }
 
-
-
+        public decimal Calculatelnsurable()
+        {
+            return .08m * EstimatedCost;
+        }
+        public override string ToString()
+        {
+            return "express shipment";
+        }
     }
 
     
