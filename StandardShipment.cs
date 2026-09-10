@@ -15,7 +15,7 @@ namespace assignmentoop02
         {
             Console.WriteLine($"tracking code : {TrackingCode}\nDescription : {Description}\nEstimatedCost: {EstimatedCost} EG\n ");
         }
-        public string GetTrackingstatue()
+        public override string GetTrackingstatue()
         {
             return "Shipment SH001 is Ready.";
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace assignmentoop02
 {
-    internal abstract class Shipment
+    internal  partial class Shipment 
     {
         //TrackingCode string        cannot be null, empty, or whitespace.  read-only from outside
         //Description string         cannot be null, empty, or whitespace.  read/write property with validation.
@@ -16,6 +16,7 @@ namespace assignmentoop02
         public int x;
         string description;
         decimal weight;
+       public static int TotalShipmentsCreated;
         #endregion
         #region property
         public string TrackingCode { get; }
@@ -35,9 +36,14 @@ namespace assignmentoop02
         }
         public Decimal DeliveryFee{ get ; private set;}
         public DeliveryAddress Destination { get; set; }
-        public abstract decimal EstimatedCost { get ; }
+        public virtual decimal EstimatedCost { get ; }
         #endregion
         #region constructor
+         static Shipment()
+        {
+            Console.WriteLine("Shipment System Initialized");
+            TotalShipmentsCreated = 0;
+        }
         public Shipment(string trackingcode) {
             if (!string.IsNullOrWhiteSpace(trackingcode))
             TrackingCode = trackingcode;
@@ -45,6 +51,8 @@ namespace assignmentoop02
             Weight = 1;
             DeliveryFee = 50;
             Destination = new DeliveryAddress();
+
+            TotalShipmentsCreated++;
         }
 
         public Shipment(string trackingCode, string description, decimal weight, decimal deliveryFee, DeliveryAddress destination)
@@ -58,6 +66,8 @@ namespace assignmentoop02
             if(deliveryFee>0)
             DeliveryFee = deliveryFee;
             Destination = destination;
+
+            TotalShipmentsCreated++;
         }
         #endregion
         #region method
@@ -68,8 +78,27 @@ namespace assignmentoop02
                 DeliveryFee = newFee;
             }
         }
-        public abstract void PrintShipment();
+        public virtual void PrintShipment() { }
+        public static  int GetTotalShipmentsCreated()
+        {
+            return TotalShipmentsCreated;
+        }
+        #endregion
+
+        #region method copying
+        public Shipment shallowcopy()
+        {
+            return (Shipment)MemberwiseClone();
+        }
+        public Shipment DeepCopy()
+        {
+            
+            Shipment deep = (Shipment) MemberwiseClone();
+            deep.Destination = new DeliveryAddress(this.Destination.City,this.Destination.Street,this.Destination.Buildingnumber);
+            return deep;
+        }
 
         #endregion
+        public partial void OnTrackingStatusChanged(string newStatus);
     }
 }

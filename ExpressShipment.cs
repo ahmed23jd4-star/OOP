@@ -29,7 +29,7 @@ namespace assignmentoop02
         {
             Console.WriteLine($"tracking code : {TrackingCode}\nExtrafee : {ExtraFee} EG\nEstimatedCost: {EstimatedCost} EG\n ");
         }
-        public string GetTrackingstatue()
+        public override string GetTrackingstatue()
         {
             return "Shipment SH002 is Out for Delivery.";
         }

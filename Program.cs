@@ -1,129 +1,119 @@
-﻿namespace assignmentoop02
+﻿using System.Reflection.Metadata;
+
+namespace assignmentoop02
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            #region part 01 — Theoretical Questions
+            #region Part 01 — Theoretical Questions
+            //Q1 Object Copying
 
-            //            Abstraction
-            //a)  What is Abstraction in Object - Oriented Programming?
-            //b)  Why is abstraction considered one of the four pillars of OOP ?
+            //a) What happens when you assign one object variable to another object variable?
+            //b) Does assigning one object to another create a new object? Explain.
+            //c) What is the difference between copying an object and copying its reference?
 
-            // هو عباره عن استخدام لكود بدون الاهتمام بتفاصيله وازاي اتعمل 
-            //  اقدر اني اتعامل مع استخدام الحاجه من غير ما اهتم بتفاصيل هو اتبني ازاي فيساعدني استخدم الاوبجكت علي طول
-            //اقدر لو حبيت اعدل علي حاجه فبعدل عليها من غير ما الاستخدام يتغير بعدل في ورا الكود 
-            // اقدر استخدم interface  واقلل الاخطاء ان اي حد هيمضي العفد ده فلازم يكون عنده شويه حاجات لازم يعملها فهقلل احتماليه اني انسي حاجه متتعملش 
+            //الاتنين بيبقي ليهم نفس العنوان فبيشاورو علي نفس الاوبجكت واي تعديل فاي واحد منهم يسمع في التاني 
+            // لا طالما بساوي اتنين اوبجكت فانا هساوي العنوان وليس انشئ اوبجكت جديد
+            // اني اعمل كوبي لاوبجكت فده معناه انه يدييني صلاحيه اني اتجكم فيه وكل واحد يبقي مستقل ليه الاوبجكت بتاعه  اما نسخ العنوان فالاتنين بيشاورو علي نفس الاوبجكت ونفس البيانات واي تعديل هيسمع عند التانيي عشان هو عنوان وليس نسخ لقلقيم الي جوا
+
+            // Q2 Shallow Copy vs Deep Copy
+            //a) What is a Shallow Copy?
+            //b) What is a Deep Copy?
+            //c) What happens to reference-type members when a Shallow Copy is created?
+            //d) What happens to reference-type members when a Deep Copy is created?
+            //e) Give one situation where Deep Copy would be safer than Shallow Copy.
+
+            //هو نسخ المستوي الاول من الاوبجكت فقط 
+            // هو نسخ الاوبجكت بجميع المتغيرات الي فيه حتي لو كان في اوبجكت جوا اوبجكت فانا بوصل لاقصي نوع من النسخ وبيبقي مستقل بشكل كلي
+            // علي حسب لو سترينج فهو غير قابل للتعديل فعشان كده بيتم معاملته كاني عملت فعلا نسخ ليه وبيبقي مستقل اما لو ريفرينس تايب تاني فسعتها باخد نسخه منه ومش بنشا منه اوبجكت مستقل
+            // بيكون مستقل بشكل كامل وكل اوبجكت اقدر اتحكم فيه لوحده 
+            // لو عندي داخل الاوبجكت الاولاني كلاس فسعتها لازم يتعمله ديب كوبي عشان المتغير الي من نوع كلاس يتعمله اوبجكت جديد هو كمان ويبقي مستقل
+
+            //Q3 Static Members
+            //a) What is a static field, and how is it different from an instance field ?
+            //b) What is a static method? Can a static method directly access instance members?
+            //c) What is a static constructor, and when is it executed ?
+            //d) What is a static class? Can you create an object from a static class?
+
+            // الفرق ان المتغير الستاتيك بقدر اناديه من اسم الكلاس بالاضافه انه بيبقي ثابت مش بيتغير بعد كل اوبجكت جديد بعمله  
+            // هي ميثود بقدر اناديها من الكلاس بشكل مباشر بدون الحاجه اني اعمل منها اوبجكت ولازم يكون المتغيرات الي جواها ستاتيك 
+            //  هو عباره عن حاجه بتتنفذ اول ما الكلاس بيتنادي عليه او بيتم استخدامه بقدر احفظ فيها حاجات ستاتيك واديها قيمه عشان اول ما يتم بناء اول اوبجكت يخش ينفذه او الاشاره ليه باي طريقه
+            // مش بقدر انشي منه اوبجكت هو بيبقي بداخله قيم ستاتيك بستخدمه عن طريق اسمه ممكن استفاد منه بحاجه بتكون مساعده بستخدمها في مشاريعي ومش بحتاج انشي منها اوبجكت زي math in c#
+
+            //Q4 Extension Methods
+            //a) What is an Extension Method?
+            //b) What keyword must be used in the first parameter of an extension method?
+            //c) Where must an extension method be declared?
+            //d) Can an extension method access private members of the class it extends?
+            // هي ميثود بضيفها عن طريق كلاس تاني ستاتيك وبتكون ستاتيتك بتاخد القيه من الي بينادي عليها 
+            // this nameclass 
+            // static class
+            // no becouse you can used and acces
 
 
-//            Abstract Classes vs.Interfaces
-//a)  What is the difference between an Abstract Class and an Interface?
-//b)  When would you choose an Interface instead of an Abstract Class?
-//c)  Can a class inherit from multiple abstract classes? Can it implement multiple interfaces?
-
-            // الابستراكت كلاس في ميزه اني بشارك الداتا زي  field and constroctur  فلو في علاقه بين الكلاسات الافضل ابستراكت كلاس
-            // اقدر استخدم كذا implment multible  interface   بيديك ميزه انك لو عايز تحقق 
-            //  لو محتاج اعمل شير للداتا او في علاقه بين كلاسين يبقي ابستراكت كلاس مناسب    لو هحتاج اعمل امبلمينت لكذا انترفيس فالاحسن وقتها استخدم الانترفيس
-            // لا الكلاس اخره يرث ابستراكت كلاس بس     اما الانترفيس فهي من ضمن ميزاه التعدد لكذا امبلمينت
+//  Q5 Partial Classes and Partial Methods
+//a) What is a Partial Class?
+//b) Why would a developer split one class into multiple files?
+//c) What is a Partial Method?
+//d) What happens if a declared partial method has no implementation?
+            
+            //هو كلاس بيتم تقسيمه 
+            //عشان قدام هيتم استخدامه اكتر عن طريق واحد منهم يبقي فيه auto generated by tools  ودي بتم تلقائي من الداتا بيز الي عندي والتاني بيتم فيه لوجيك والبيزنس بتاعي
+            // هي عباره عن ميثود يتم تقسيمها جزء فيه signture and the other partial class implment 
+            // بيتم تجاهل بس لازم اني اكتب الميثود واعمل قوس امبلمينت بس لو مكتبتش حاجه جوا فعادي ولازم طبعا تكون الداله مش بترجع قيمه لانها لو بترجع قيمه هيدي ايرور اصلا ولازم امبلمينت
             #endregion
-        #region field
-            string trackingcode;
-            string descraption;
-            decimal weight;
-            decimal delivaryfee;
-            DeliveryAddress destaintion;
-            string city;
-            string street;
-            int buildnumber;
-            decimal extrafee;
-            decimal customsFee;
-            string destinationCountry;
+        #region Part 02 — Practical
+
+            Shipment sh01 = new StandardShipment("sh001", "laptop", 10m, 15m, new DeliveryAddress("cairo", "altahrir", 5));
+            Shipment sh02 = sh01;
+            Console.WriteLine(sh01.Description);
+            Console.WriteLine(sh02.Description);
+            sh01.Description = "aaaaaaaa";
+            Console.WriteLine(sh01.Description);
+            Console.WriteLine(sh02.Description);
+            // have the two are changed bacouse that refernce have the same object
+            Shipment sh03shallow = sh01.shallowcopy();
+            Console.WriteLine(sh03shallow.Destination.City);
+            Console.WriteLine(sh01.Destination.City);
+            sh03shallow.Destination.City = "giza";
+            Console.WriteLine(sh03shallow.Destination.City);
+            Console.WriteLine(sh01.Destination.City);
+            // shallow copying copy the first level only
+            Shipment sh02exp = new ExpressShipment("sh000","mobile",10m,80m,new DeliveryAddress("tanta","ssss",5), 55m);
+            Shipment sh03int = new InternationalShipment("sh000","mobile",10m,80m,new DeliveryAddress("tanta","ssss",5), "ffff",55m);
+
+
+
+            //Create a Deep Copy.
+            Shipment sh04deep = sh01.DeepCopy();
+            Console.WriteLine(sh04deep.Destination.Street);
+            Console.WriteLine(sh01.Destination.Street);
+            sh01.Destination.Street = "albhoth";
+            Console.WriteLine(sh04deep.Destination.Street);
+            Console.WriteLine(sh01.Destination.Street);
+            Console.WriteLine($"TotalShipmentsCreated : {Shipment.TotalShipmentsCreated}");
+            DeliveryUtilities.PrintSystemTitle();
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("-------------------------------------------------------------------------\n");
+
+            Console.WriteLine(ShipmentExtensions.GetSummary(sh01));
+            Console.WriteLine("-------------------------------------------------------------------------\n");
+            Console.WriteLine(ShipmentExtensions.GetSummary(sh02exp));
+            Console.WriteLine("-------------------------------------------------------------------------\n");
+            Console.WriteLine(ShipmentExtensions.GetSummary(sh03int));
+            Console.WriteLine("-------------------------------------------------------------------------\n");
+            Console.WriteLine(ShipmentExtensions.IsDelivered(sh01));
+            Console.WriteLine("-------------------------------------------------------------------------\n");
+            Console.WriteLine(ShipmentExtensions.IsDelivered(sh02exp));
+            Console.WriteLine("-------------------------------------------------------------------------\n");
+            Console.WriteLine(ShipmentExtensions.IsDelivered(sh03int));
+            Console.WriteLine("-------------------------------------------------------------------------\n");
+            sh01.OnTrackingStatusChanged("pppppppp");
             #endregion
             
-            
-            #region standerd
-            DeliveryCenter obj = new DeliveryCenter();
-            Console.WriteLine("enter the center name");
-            obj.CenterName = Console.ReadLine();
-            Console.WriteLine("enter the trackingcode for standerd");
-            trackingcode = Console.ReadLine();
-            Console.WriteLine("enter the descraption for standerd");
-            descraption = Console.ReadLine();
-            Console.WriteLine("enter the weight for standerd");
-            bool ispressed = decimal.TryParse(Console.ReadLine(), out weight);
-            Console.WriteLine("enter the delivaryfee for standerd");
-            ispressed = decimal.TryParse(Console.ReadLine(), out delivaryfee);
-            Console.WriteLine("enter the city for standerd");
-            city = Console.ReadLine();
-            Console.WriteLine("enter the street for standerd");
-            street = Console.ReadLine();
-            Console.WriteLine("enter the buildnumber for standerd");
-            ispressed = int.TryParse(Console.ReadLine(), out buildnumber);
-            destaintion = new DeliveryAddress(city, street, buildnumber);
-            StandardShipment sta01 = new StandardShipment(trackingcode,descraption,weight,delivaryfee,destaintion);
-            #endregion
-            Console.WriteLine("--------------------------------------------------------------------------------");
-            Console.WriteLine($"delivery center : {obj.CenterName}");
-            #region ExpressShipment.
-            Console.WriteLine("enter the trackingcode for ExpressShipment.");
-            trackingcode = Console.ReadLine();
-            Console.WriteLine("enter the descraption for ExpressShipment.");
-            descraption = Console.ReadLine();
-            Console.WriteLine("enter the weight for ExpressShipment.");
-            ispressed = decimal.TryParse(Console.ReadLine(), out weight);
-            Console.WriteLine("enter the delivaryfee for ExpressShipment.");
-            ispressed = decimal.TryParse(Console.ReadLine(), out delivaryfee);
-            Console.WriteLine("enter the extrafee for ExpressShipment.");
-            ispressed = decimal.TryParse(Console.ReadLine(), out extrafee);
-            Console.WriteLine("enter the city for ExpressShipment.");
-            city = Console.ReadLine();
-            Console.WriteLine("enter the street for ExpressShipment.");
-            street = Console.ReadLine();
-            Console.WriteLine("enter the buildnumber for ExpressShipment.");
-            ispressed = int.TryParse(Console.ReadLine(), out buildnumber);
-            destaintion = new DeliveryAddress(city, street, buildnumber);
-            ExpressShipment exp01 = new ExpressShipment(trackingcode, descraption, weight, delivaryfee, destaintion, extrafee);
-            #endregion
-            Console.WriteLine("--------------------------------------------------------------------------------");
-            #region InternationalShipment
-            Console.WriteLine("enter the trackingcode for InternationalShipment");
-            trackingcode = Console.ReadLine();
-            Console.WriteLine("enter the descraption for InternationalShipment");
-            descraption = Console.ReadLine();
-            Console.WriteLine("enter the destinationCountry for InternationalShipment");
-            destinationCountry = Console.ReadLine();
-            Console.WriteLine("enter the weight for InternationalShipment");
-             ispressed = decimal.TryParse(Console.ReadLine(), out weight);
-            Console.WriteLine("enter the delivaryfee for InternationalShipment");
-            ispressed = decimal.TryParse(Console.ReadLine(), out delivaryfee);
-            Console.WriteLine("enter the customsFee for InternationalShipment");
-            ispressed = decimal.TryParse(Console.ReadLine(), out customsFee);
-            Console.WriteLine("enter the city for InternationalShipment");
-            city = Console.ReadLine();
-            Console.WriteLine("enter the street for InternationalShipment");
-            street = Console.ReadLine();
-            Console.WriteLine("enter the buildnumber for InternationalShipment");
-            ispressed = int.TryParse(Console.ReadLine(), out buildnumber);
-            destaintion = new DeliveryAddress(city, street, buildnumber);
-            InternationalShipment int01 = new InternationalShipment(trackingcode, descraption, weight, delivaryfee, destaintion, destinationCountry, customsFee);
-            #endregion
-            Console.WriteLine("--------------------------------------------------------------------------------");
-            obj[0] = sta01;
-            obj[1] = exp01;
-            obj[2] = int01;
-            obj.PrintAllShipments();
-            obj.PrintTrackingStatuses();
-            obj.printInsurable();
-            Itrackable[] array00 = { sta01, exp01, int01 };
-            Ilnsurable[] array001 = { sta01, exp01, int01 };
-            foreach (var item in array00)
-            {
-                Console.WriteLine(item.GetTrackingstatue());
-            }
-            foreach (var item in array001)
-            {
-                Console.WriteLine(item.Calculatelnsurable());
-            }
         }
+
+
     }
 }

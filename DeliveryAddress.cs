@@ -5,7 +5,7 @@ using System.Text;
 
 namespace assignmentoop02
 {
-    internal struct DeliveryAddress
+    internal class DeliveryAddress
     {
         public string City { get; set; }
         public string Street { get; set; }
@@ -20,6 +20,10 @@ namespace assignmentoop02
             }
         }
         public int[] x = new int[10];
+        public DeliveryAddress()
+        {
+
+        }
 
         public DeliveryAddress(string city, string street,int buildingnumber)
         {
