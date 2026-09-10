@@ -1,78 +1,90 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
-namespace assignmentoop02
+namespace assignmentoop01
 {
-    internal class Shipment
+    internal struct Shipment
+        
     {
-        //TrackingCode string        cannot be null, empty, or whitespace.  read-only from outside
-        //Description string         cannot be null, empty, or whitespace.  read/write property with validation.
-        //Weight decimal            must be greater than 0.                 read/write property with validation.
-        //DeliveryFee decimal       must be greater than 0.                 public getter and private setter.
-        //Destination DeliveryAddress                                       public read/write property.
-        //EstimatedCost: a calculated property that returns: DeliveryFee + (Weight × 5)
-        #region private field
-        public int x;
-        string description;
-        decimal weight;
-        #endregion
-        #region property
-        public string TrackingCode { get; }
-        public string Description { get =>description;
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                    description = value;
-            }
-        }
-        public Decimal Weight { get => weight;
-            set
-            {
-                if (value > 0)
-                    weight = value;
-            }
-        }
-        public Decimal DeliveryFee{ get ; private set;}
-        public DeliveryAddress Destination { get; set; }
-        public decimal EstimatedCost { get => DeliveryFee + (Weight * 5); }
-        #endregion
-        #region constructor
-        public Shipment(string trackingcode) {
-            if (!string.IsNullOrWhiteSpace(trackingcode))
-            TrackingCode = trackingcode;
-            Description = "unknown";
-            Weight = 1;
-            DeliveryFee = 50;
-            Destination = new DeliveryAddress();
-        }
+        #region 2.Ceate a Shipment struct
 
-        public Shipment(string trackingCode, string description, decimal weight, decimal deliveryFee, DeliveryAddress destination)
-        {
-            if (!string.IsNullOrWhiteSpace(trackingCode))
-            {
-            TrackingCode = trackingCode;
-            }
-            Description = description;
-            Weight = weight;
-            if(deliveryFee>0)
-            DeliveryFee = deliveryFee;
-            Destination = destination;
-        }
+        //private string trackingCode;
+        //private string description="unknown";
+        //private int weight = 1;
+        //private decimal deliveryFee=50m;
+        //public DeliveryAddres Destination { set; get ; }
+        //public string TrackingCode { get { return trackingCode; } }
+        //public string Description { 
+        //    set {
+        //        if (!string.IsNullOrEmpty(value?.Trim()))
+        //        {
+        //            description = value;
+        //        }
+        //    }
+        //    get { return description; }
+        //}
+        //public int Weight
+        //{
+        //    set
+        //    {
+        //        if (value > 0)
+        //            weight = value;
+        //     }
+        //    get
+        //    {
+        //        return weight;
+        //    }
+        //}
+        //public decimal DeliveryFee
+        //{
+        //    private set;
+        //    get
+        //    {
+        //        return deliveryFee ;
+        //    }
+        //}
+        //public decimal EstimatedCost
+        //{
+        //    get {
+        //        return DeliveryFee + (Weight*5);
+        //}
+        //}
+        //public Shipment(string track)
+        //{
+        //    if (!string.IsNullOrEmpty(track?.Trim()))
+        //    {
+        //        trackingCode = track;
+        //    }
+        //    Weight = 1;
+        //    DeliveryFee = 50m;
+        //    Description = "unknown";
+        //    Destination = new DeliveryAddres();
+
+        //}
+        //public Shipment(string track, string descraption , int weight , decimal delevryfee , DeliveryAddres deliveryaddres )
+        //{
+        //    if (!string.IsNullOrEmpty(track?.Trim()))
+        //    {
+        //        trackingCode = track;
+        //    }
+        //    Weight = weight;
+        //    Description = descraption;
+        //    DeliveryFee = delevryfee;
+        //    Destination = deliveryaddres;
+
+        //} 
+        //public void UpdateDeliveryFee(decimal deliveryfee)
+        //{
+        //    if (deliveryfee > 0)
+        //        DeliveryFee = deliveryfee ;
+        //}
+        //public void PrintShipment()
+        //{
+        //    Console.WriteLine($"Tracking code : {TrackingCode} \n descraption : {Description} \n weight : {Weight}\n deliveryfee : {DeliveryFee}\n {Destination}");
+        //}
         #endregion
-        #region method
-        public void UpdateDeliveryFee(decimal newFee)
-        {
-            if (newFee > 0)
-            {
-                DeliveryFee = newFee;
-            }
-        }
-        public void PrintShipment()
-        {
-            Console.WriteLine($"tracking code is {TrackingCode} description is {Description} and weight is {Weight} \nthe deliveery fee is {DeliveryFee}" +
-                $"deliveryaddrese is {Destination.GetFullAddress()} \nEstimatedCost: {EstimatedCost}\n");
-        }
-        #endregion
+
     }
 }
