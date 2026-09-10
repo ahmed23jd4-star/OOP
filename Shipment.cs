@@ -35,7 +35,7 @@ namespace assignmentoop02
         }
         public Decimal DeliveryFee{ get ; private set;}
         public DeliveryAddress Destination { get; set; }
-        public decimal EstimatedCost { get => DeliveryFee + (Weight * 5); }
+        public virtual decimal EstimatedCost { get => DeliveryFee + (Weight * 5); }
         #endregion
         #region constructor
         public Shipment(string trackingcode) {
@@ -68,10 +68,20 @@ namespace assignmentoop02
                 DeliveryFee = newFee;
             }
         }
-        public void PrintShipment()
+        public virtual void PrintShipment()
         {
-            Console.WriteLine($"tracking code is {TrackingCode} description is {Description} and weight is {Weight} \nthe deliveery fee is {DeliveryFee}" +
-                $"deliveryaddrese is {Destination.GetFullAddress()} \nEstimatedCost: {EstimatedCost}\n");
+            Console.WriteLine($"standerd shipment \n \ntracking code is :{TrackingCode}\n description:{Description} \nweight: {Weight} kg \ndeliveery:{DeliveryFee} EG" +
+                $"\nEstimatedCost: {EstimatedCost} EG\n ------------------------------------------------------------------\n");
+        }
+        public void Updatesweight (decimal newweight)
+        {
+            Weight = newweight;
+            Console.WriteLine($"Updated Weight : {Weight} KG");
+        }
+        public void Updatesweight(decimal newweight,decimal packingweight)
+        {
+            Weight = newweight + packingweight;
+            Console.WriteLine($"Updated Weight After Packing : {Weight} KG");
         }
         #endregion
     }

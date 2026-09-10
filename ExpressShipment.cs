@@ -22,9 +22,14 @@ namespace assignmentoop02
         {
             ExtraFee = extrafee;
             
+            
         }
-        public decimal EstimatedCost { get => DeliveryFee + (Weight * 5) + ExtraFee; }
-
+        public override decimal EstimatedCost => DeliveryFee + (Weight * 5) + ExtraFee;
+        public override void PrintShipment()
+        {
+            Console.WriteLine($"Express Shipment\n \n tracking code is :{TrackingCode}\n description:{Description} \nweight: {Weight} kg\ndeliveery:{DeliveryFee} EG" +
+                $"\nEstimatedCost: {EstimatedCost} EG\nExtra Fee :{ExtraFee} EG\n------------------------------------------------------------\n");
+        }
 
 
 

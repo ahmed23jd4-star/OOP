@@ -10,5 +10,9 @@ namespace assignmentoop02
         {
 
         }
+        public override void PrintShipment()
+        {
+            base.PrintShipment();
+        }
     }
 }
